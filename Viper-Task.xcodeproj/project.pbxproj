@@ -26,8 +26,6 @@
 		1FE1888C289FFF5400E42B51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE1888B289FFF5400E42B51 /* AppDelegate.swift */; };
 		1FE18895289FFF5500E42B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FE18894289FFF5500E42B51 /* Assets.xcassets */; };
 		1FE18898289FFF5500E42B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE18896289FFF5500E42B51 /* LaunchScreen.storyboard */; };
-		1FE188AD289FFF5500E42B51 /* Viper_TaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE188AC289FFF5500E42B51 /* Viper_TaskUITests.swift */; };
-		1FE188AF289FFF5500E42B51 /* Viper_TaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE188AE289FFF5500E42B51 /* Viper_TaskUITestsLaunchTests.swift */; };
 		1FE188BC28A0005F00E42B51 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE188BB28A0005F00E42B51 /* ListViewController.swift */; };
 		1FE188C028A000DE00E42B51 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE188BF28A000DE00E42B51 /* ListPresenter.swift */; };
 		1FE188C228A000E300E42B51 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE188C128A000E300E42B51 /* ListInteractor.swift */; };
@@ -79,8 +77,6 @@
 		1FE18899289FFF5500E42B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FE1889E289FFF5500E42B51 /* Viper-TaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Viper-TaskTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE188A8289FFF5500E42B51 /* Viper-TaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Viper-TaskUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FE188AC289FFF5500E42B51 /* Viper_TaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viper_TaskUITests.swift; sourceTree = "<group>"; };
-		1FE188AE289FFF5500E42B51 /* Viper_TaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viper_TaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1FE188BB28A0005F00E42B51 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		1FE188BF28A000DE00E42B51 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		1FE188C128A000E300E42B51 /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
@@ -245,7 +241,6 @@
 			children = (
 				1FE1888A289FFF5400E42B51 /* Viper-Task */,
 				1FE188A1289FFF5500E42B51 /* Viper-TaskTests */,
-				1FE188AB289FFF5500E42B51 /* Viper-TaskUITests */,
 				1FE18889289FFF5400E42B51 /* Products */,
 				BB30EB99147B0F9BCC9743A4 /* Pods */,
 				1E707A4BCE620F1FD5F72698 /* Frameworks */,
@@ -280,15 +275,6 @@
 			children = (
 			);
 			path = "Viper-TaskTests";
-			sourceTree = "<group>";
-		};
-		1FE188AB289FFF5500E42B51 /* Viper-TaskUITests */ = {
-			isa = PBXGroup;
-			children = (
-				1FE188AC289FFF5500E42B51 /* Viper_TaskUITests.swift */,
-				1FE188AE289FFF5500E42B51 /* Viper_TaskUITestsLaunchTests.swift */,
-			);
-			path = "Viper-TaskUITests";
 			sourceTree = "<group>";
 		};
 		1FE188BD28A000A300E42B51 /* Supporting files */ = {
@@ -653,8 +639,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FE188AF289FFF5500E42B51 /* Viper_TaskUITestsLaunchTests.swift in Sources */,
-				1FE188AD289FFF5500E42B51 /* Viper_TaskUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
