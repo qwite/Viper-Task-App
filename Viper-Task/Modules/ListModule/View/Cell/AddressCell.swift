@@ -72,19 +72,19 @@ extension AddressCell {
         
         addSubview(firstVerticalStack)
         NSLayoutConstraint.activate([
+            // firstVerticalStack
             firstVerticalStack.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             firstVerticalStack.leftAnchor.constraint(equalTo: leftAnchor, constant: 20),
         ])
         
         let secondVerticalStack = UIStackView(arrangedSubviews: [endAddressStack, priceAddressStack], spacing: 10, axis: .vertical, alignment: .fill)
-//        secondVerticalStack.distribution = .fillEqually
+        
         addSubview(secondVerticalStack)
+        // secondVerticalStack
         NSLayoutConstraint.activate([
             secondVerticalStack.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             secondVerticalStack.rightAnchor.constraint(equalTo: rightAnchor, constant: -20)
         ])
-        
-
     }
     
     private func configureLabels() {
