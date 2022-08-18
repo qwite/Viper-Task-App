@@ -7,6 +7,9 @@ protocol DetailsInteractorInputProtocol {
     
     init(service: NetworkServiceProtocol, fileService: FileServiceProtocol)
     
+    func getImage(order: ActiveOrder)
+    func downloadImage(order: ActiveOrder)
+    func createViewModel(order: ActiveOrder, imageData: Data)
     func getDetailedOrder(by id: Int)
 }
 

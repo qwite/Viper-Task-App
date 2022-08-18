@@ -70,6 +70,7 @@
 		1F97144E28A13A7900F269D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1F97145128A1A0CE00F269D5 /* ActiveOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveOrderViewModel.swift; sourceTree = "<group>"; };
 		1FAB64EC28ABB9D60028BB5D /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
+		1FD4577D28AD31940066578B /* simulator-recording.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "simulator-recording.gif"; sourceTree = "<group>"; };
 		1FE18888289FFF5400E42B51 /* Viper-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Viper-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE1888B289FFF5400E42B51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FE18894289FFF5500E42B51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -236,6 +237,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		1FD4577E28AE35F80066578B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1FFE3F0928A7C477008BDE35 /* Mapper */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		1FE1887F289FFF5400E42B51 = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +252,7 @@
 				1FE188A1289FFF5500E42B51 /* Viper-TaskTests */,
 				1FE18889289FFF5400E42B51 /* Products */,
 				BB30EB99147B0F9BCC9743A4 /* Pods */,
+				1FD4577D28AD31940066578B /* simulator-recording.gif */,
 				1E707A4BCE620F1FD5F72698 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -260,7 +270,7 @@
 		1FE1888A289FFF5400E42B51 /* Viper-Task */ = {
 			isa = PBXGroup;
 			children = (
-				1FFE3F0928A7C477008BDE35 /* Mapper */,
+				1FD4577E28AE35F80066578B /* Common */,
 				1F237CD528A27F0C00493EB4 /* Services */,
 				1F237CD428A27EFF00493EB4 /* Modules */,
 				1F237CCF28A26FE500493EB4 /* Extensions */,

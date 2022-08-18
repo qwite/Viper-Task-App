@@ -22,14 +22,6 @@ extension DateFormatter {
         return df
     }()
     
-    static let time: DateFormatter = {
-        let df = DateFormatter()
-        df.locale = .current
-        df.dateFormat = "HH:mm:ss"
-        
-        return df
-    }()
-    
     static func getFullDate(date: String) -> String? {
         guard let parsedDate = iso8601.date(from: date) else { return nil }
         
