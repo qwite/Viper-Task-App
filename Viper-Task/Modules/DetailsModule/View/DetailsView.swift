@@ -66,7 +66,7 @@ extension DetailsView {
         startAddressLabel.text = viewModel.common.startAddress
         endAddressLabel.text = viewModel.common.endAddress
         dateTimeLabel.text = viewModel.common.date
-        priceLabel.text = viewModel.common.price
+        priceLabel.text = "\(viewModel.common.price) ₽"
         carLabel.text = "\(viewModel.vehicleModelName) / \(viewModel.vehicleRegNumber)"
         driverLabel.text = viewModel.vehicleDriverName
         

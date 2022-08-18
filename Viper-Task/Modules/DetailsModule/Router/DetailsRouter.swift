@@ -11,7 +11,6 @@ protocol DetailsRouterInputProtocol: AnyObject {
     var router: UnownedRouter<ListRoutes> { get set }
     init(router: UnownedRouter<ListRoutes>)
     
-    
     func showError(message: String)
 }
 
