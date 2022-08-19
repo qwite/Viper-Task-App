@@ -43,13 +43,13 @@ class DetailsInteractor: DetailsInteractorInputProtocol {
     func downloadImage(order: ActiveOrder) {
         print("[Log] Downloading a photo...")
         
-        service.getImage(imageName: order.vehicle.photo, completion: { [weak self] result in
+        service.getImage(imageName: order.vehicle.photo, completion: { result in
             switch result {
             case .success(let data):
-                self?.createViewModel(order: order, imageData: data)
-                self?.fileService.saveImage(imageData: data, imageKey: order.vehicle.photo)
+                self.createViewModel(order: order, imageData: data)
+                self.fileService.saveImage(imageData: data, imageKey: order.vehicle.photo)
             case .failure(let error):
-                self?.presenter?.showError(message: Constants.Errors.downloadingImageError + " : \(error)")
+                self.presenter?.showError(message: Constants.Errors.downloadingImageError + " : \(error)")
             }
         })
     }
@@ -60,17 +60,17 @@ class DetailsInteractor: DetailsInteractorInputProtocol {
     }
     
     func getDetailedOrder(by id: Int) {
-        service.fetchActiveOrders(completion: { [weak self] result in
+        service.fetchActiveOrders(completion: { result in
             switch result {
             case .success(let orders):
                 guard let order = orders.first(where: { $0.id == id }) else {
-                    self?.presenter?.showError(message: Constants.Errors.loadingOrdersError)
+                    self.presenter?.showError(message: Constants.Errors.loadingOrdersError)
                     return
                 }
                 
-                self?.getImage(order: order)
+                self.getImage(order: order)
             case .failure(let error):
-                self?.presenter?.showError(message: Constants.Errors.loadingOrdersError + ": \(error)")
+                self.presenter?.showError(message: Constants.Errors.loadingOrdersError + ": \(error)")
             }
         })
     }

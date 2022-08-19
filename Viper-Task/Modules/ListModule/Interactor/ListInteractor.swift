@@ -25,13 +25,13 @@ class ListInteractor: ListInteractorInputProtocol {
     }
     
     func fetchOrders() {
-        service?.fetchActiveOrders(completion: { [weak self] result in
+        service?.fetchActiveOrders(completion: { result in
             switch result {
             case .success(let orders):
                 let viewModel = ActiveOrderMapper.convert(from: orders)
-                self?.presenter?.setViewModel(viewModel: viewModel)
-            case .failure(_):
-                self?.presenter?.showError(message: Constants.Errors.loadingOrdersError)
+                self.presenter?.setViewModel(viewModel: viewModel)
+            case .failure(let error):
+                self.presenter?.showError(message: Constants.Errors.loadingOrdersError + ": \(error)")
             }
         })
     }
