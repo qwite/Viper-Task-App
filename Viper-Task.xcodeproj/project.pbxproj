@@ -240,6 +240,9 @@
 		1FD4577E28AE35F80066578B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1F237CCF28A26FE500493EB4 /* Extensions */,
+				1F97144D28A13A7200F269D5 /* Constants */,
+				1F237CD528A27F0C00493EB4 /* Services */,
 				1FFE3F0928A7C477008BDE35 /* Mapper */,
 			);
 			path = Common;
@@ -271,10 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				1FD4577E28AE35F80066578B /* Common */,
-				1F237CD528A27F0C00493EB4 /* Services */,
 				1F237CD428A27EFF00493EB4 /* Modules */,
-				1F237CCF28A26FE500493EB4 /* Extensions */,
-				1F97144D28A13A7200F269D5 /* Constants */,
 				1FE188BD28A000A300E42B51 /* Supporting files */,
 			);
 			path = "Viper-Task";

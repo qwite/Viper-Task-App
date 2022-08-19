@@ -13,11 +13,6 @@ extension FileServiceProtocol {
     }
 }
 
-// MARK: - ImageFile Structure
-private struct ImageFile: Codable  {
-    let expireTime: String
-}
-
 // MARK: - FileService
 class FileService {
     let fileManager: FileManager = .default
@@ -27,9 +22,17 @@ class FileService {
     init() {
         createCacheFolderIfNeeded()
     }
-    
-    // MARK: - Private methods
-    
+}
+
+// MARK: - ImageFile Structure
+extension FileService {
+    private struct ImageFile: Codable  {
+        let expireTime: String
+    }
+}
+
+// MARK: - Private methods
+extension FileService {
     /// Creating folder and dictionary (urls.json) path if not exist
     private func createCacheFolderIfNeeded() -> Error? {
         guard let folderUrl = getFolderPath(),
@@ -46,7 +49,7 @@ class FileService {
             // Creating urls.json file
             fileManager.createFile(atPath: dictFileUrl.path, contents: nil, attributes: nil)
             print("[Log] Creating a urls.json file...")
-    
+            
         } catch let error {
             return error
         }
@@ -73,7 +76,7 @@ class FileService {
         guard let folderPath = getFolderPath() else {
             return nil
         }
-
+        
         return folderPath.appendingPathComponent(key)
     }
     
