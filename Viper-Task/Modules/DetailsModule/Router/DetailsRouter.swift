@@ -23,6 +23,6 @@ class DetailsRouter: DetailsRouterInputProtocol {
     }
     
     func showError(message: String) {
-        router.trigger(.alert(message))
+        self.router.trigger(.alert(message))
     }
 }

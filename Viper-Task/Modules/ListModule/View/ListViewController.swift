@@ -63,7 +63,7 @@ extension ListViewController: ListViewProtocol {
     }
     
     func updateTableView() {
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
 }
 
@@ -74,7 +74,7 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.getViewModelCount()
+        return self.presenter.getViewModelCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,7 +95,7 @@ extension ListViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.didItemSelected(at: indexPath.row)
+        self.presenter.didItemSelected(at: indexPath.row)
         
         tableView.deselectRow(at: indexPath, animated: true)
     }

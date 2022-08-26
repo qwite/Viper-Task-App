@@ -28,19 +28,19 @@ class DetailsPresenter: DetailsPresenterProtocol {
     }
     
     func viewDidLoad() {
-        view?.changeIndicatorState(state: true)
-        interactor?.getDetailedOrder(by: orderId)
+        self.view?.changeIndicatorState(state: true)
+        self.interactor?.fetchDetailedOrder(by: orderId)
     }
 }
 
 // MARK: - DetailsInteractorOutputProtocol Implementation
 extension DetailsPresenter: DetailsInteractorOutputProtocol {
-    func setViewModel(viewModel: DetailedActiveOrderViewModelType) {
-        view?.configure(with: viewModel)
-        view?.changeIndicatorState(state: false)
+    func configureView(viewModel: DetailedActiveOrderViewModel) {
+        self.view?.configure(with: viewModel)
+        self.view?.changeIndicatorState(state: false)
     }
     
     func showError(message: String) {
-        router?.showError(message: message)
+        self.router?.showError(message: message)
     }
 }

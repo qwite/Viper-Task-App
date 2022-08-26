@@ -7,7 +7,7 @@ class ActiveOrderMapper {
         case dateWithTime
     }
     
-    static func convert(from order: ActiveOrder, dateType: DateType) -> ActiveOrderViewModelType {
+    static func convert(from order: ActiveOrder, dateType: DateType) -> ActiveOrderViewModel {
         var date: String?
         switch dateType {
         case .date:
@@ -25,8 +25,8 @@ class ActiveOrderMapper {
                                     price: convertedPrice)
     }
     
-    static func convert(from activeOrders: [ActiveOrder]) -> [ActiveOrderViewModelType] {
-        var array: [ActiveOrderViewModelType] = []
+    static func convert(from activeOrders: [ActiveOrder]) -> [ActiveOrderViewModel] {
+        var array: [ActiveOrderViewModel] = []
         
         for order in activeOrders {
             array.append(convert(from: order, dateType: .date))
@@ -35,12 +35,12 @@ class ActiveOrderMapper {
         return array
     }
     
-    static func convertDetail(from order: ActiveOrder, image: Data) -> DetailedActiveOrderViewModelType {
+    static func convertDetail(from order: ActiveOrder, image: Data) -> DetailedActiveOrderViewModel {
         let commonViewModel = convert(from: order, dateType: .dateWithTime)
         let detailViewModel = DetailedActiveOrderViewModel(common: commonViewModel,
                                                            image: image,
-                                                           vehicleRegNumber: order.vehicle.regNumber,
                                                            vehicleModelName: order.vehicle.modelName,
+                                                           vehicleRegNumber: order.vehicle.regNumber,
                                                            vehiclePhoto: order.vehicle.photo,
                                                            vehicleDriverName: order.vehicle.driverName)
         return detailViewModel
