@@ -14,6 +14,6 @@ By clicking on the list item, need to display it with detailed information. Afte
 * iOS 12+
 * Swift 5.0+
 
-# Used Pods 
+# SPM Packages
 * Alamofire
 * XCoordinator
