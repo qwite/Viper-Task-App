@@ -45,11 +45,11 @@ extension AddressCell {
 
 // MARK: - Public methods
 extension AddressCell {
-    public func configureCell(with viewModel: ActiveOrderViewModelType) {
+    public func configureCell(with viewModel: ActiveOrderViewModel) {
         dateAddressLabel.text = viewModel.date
         startAddressLabel.text = viewModel.startAddress
         endAddressLabel.text = viewModel.endAddress
-        priceAddressLabel.text = "\(viewModel.price) ₽"
+        priceAddressLabel.text = viewModel.price
         
         configureViews()
     }

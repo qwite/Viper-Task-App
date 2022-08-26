@@ -7,15 +7,15 @@ protocol DetailsInteractorInputProtocol {
     
     init(service: NetworkServiceProtocol, fileService: FileServiceProtocol)
     
-    func getImage(order: ActiveOrder)
+    func pullImageFromCache(order: ActiveOrder)
     func downloadImage(order: ActiveOrder)
     func createViewModel(order: ActiveOrder, imageData: Data)
-    func getDetailedOrder(by id: Int)
+    func fetchDetailedOrder(by id: Int)
 }
 
 // MARK: - DetailsInteractorOutputProtocol
 protocol DetailsInteractorOutputProtocol: AnyObject {
-    func setViewModel(viewModel: DetailedActiveOrderViewModelType)
+    func configureView(viewModel: DetailedActiveOrderViewModel)
     func showError(message: String)
 }
 
@@ -31,23 +31,24 @@ class DetailsInteractor: DetailsInteractorInputProtocol {
         self.fileService = fileService
     }
     
-    func getImage(order: ActiveOrder) {
+    func pullImageFromCache(order: ActiveOrder) {
         guard let imageData = fileService.getImage(imageKey: order.vehicle.photo) else {
-            downloadImage(order: order); return
+            self.downloadImage(order: order); return
         }
         
-        print("[Log] Getting file from a cache...")
-        createViewModel(order: order, imageData: imageData)
+        self.createViewModel(order: order, imageData: imageData)
     }
     
     func downloadImage(order: ActiveOrder) {
-        print("[Log] Downloading a photo...")
-        
-        service.getImage(imageName: order.vehicle.photo, completion: { result in
+        service.downloadImage(imageName: order.vehicle.photo, completion: { result in
             switch result {
             case .success(let data):
                 self.createViewModel(order: order, imageData: data)
-                self.fileService.saveImage(imageData: data, imageKey: order.vehicle.photo)
+                
+                guard self.fileService.saveImage(imageData: data, imageKey: order.vehicle.photo) == nil else {
+                    self.presenter?.showError(message: Constants.Errors.downloadingImageError); return
+                }
+                
             case .failure(let error):
                 self.presenter?.showError(message: Constants.Errors.downloadingImageError + " : \(error)")
             }
@@ -56,11 +57,11 @@ class DetailsInteractor: DetailsInteractorInputProtocol {
     
     func createViewModel(order: ActiveOrder, imageData: Data) {
         let viewModel = ActiveOrderMapper.convertDetail(from: order, image: imageData)
-        presenter?.setViewModel(viewModel: viewModel)
+        self.presenter?.configureView(viewModel: viewModel)
     }
     
-    func getDetailedOrder(by id: Int) {
-        service.fetchActiveOrders(completion: { result in
+    func fetchDetailedOrder(by id: Int) {
+        self.service.fetchActiveOrders(completion: { result in
             switch result {
             case .success(let orders):
                 guard let order = orders.first(where: { $0.id == id }) else {
@@ -68,7 +69,7 @@ class DetailsInteractor: DetailsInteractorInputProtocol {
                     return
                 }
                 
-                self.getImage(order: order)
+                self.pullImageFromCache(order: order)
             case .failure(let error):
                 self.presenter?.showError(message: Constants.Errors.loadingOrdersError + ": \(error)")
             }

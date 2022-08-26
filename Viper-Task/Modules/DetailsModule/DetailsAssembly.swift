@@ -13,6 +13,7 @@ class DetailsAssembly {
         
         view.presenter = presenter
         interactor.presenter = presenter
+        
         return view
     }
 }

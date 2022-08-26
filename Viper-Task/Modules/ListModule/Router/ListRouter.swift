@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import XCoordinator
 
 // MARK: - ListRoutes
@@ -26,11 +26,11 @@ class ListRouter: ListRouterInputProtocol {
     }
     
     func showDetail(with id: Int) {
-        router.trigger(.details(id))
+        self.router.trigger(.details(id))
     }
     
     func showError(message: String) {
-        router.trigger(.alert(message))
+        self.router.trigger(.alert(message))
     }
 }
 

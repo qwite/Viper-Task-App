@@ -4,7 +4,7 @@ import UIKit
 protocol DetailsViewProtocol: AnyObject {
     var presenter: DetailsPresenterProtocol! { get set }
     
-    func configure(with viewModel: DetailedActiveOrderViewModelType)
+    func configure(with viewModel: DetailedActiveOrderViewModel)
     func changeIndicatorState(state: Bool)
 }
 
@@ -14,6 +14,7 @@ class DetailsViewController: UIViewController {
     var detailsView = DetailsView()
         
     // MARK: Lifecycle
+    
     override func loadView() {
         view = detailsView
     }
@@ -32,7 +33,7 @@ class DetailsViewController: UIViewController {
 
 // MARK: - DetailsViewProtocol Implementation
 extension DetailsViewController: DetailsViewProtocol {
-    func configure(with viewModel: DetailedActiveOrderViewModelType) {
+    func configure(with viewModel: DetailedActiveOrderViewModel) {
         detailsView.configure(viewModel: viewModel)
     }
     

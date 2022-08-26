@@ -4,6 +4,7 @@ import Foundation
 protocol ListInteractorInputProtocol {
     var presenter: ListInteractorOutputProtocol? { get set }
     var service: NetworkServiceProtocol? { get set }
+    
     init(service: NetworkServiceProtocol)
     
     func fetchOrders()
@@ -11,7 +12,7 @@ protocol ListInteractorInputProtocol {
 
 // MARK: - ListInteractorOutputProtocol Implementation
 protocol ListInteractorOutputProtocol: AnyObject {
-    func setViewModel(viewModel: [ActiveOrderViewModelType])
+    func setViewModel(viewModel: [ActiveOrderViewModel])
     func showError(message: String)
 }
 

@@ -31,6 +31,50 @@ extension FileService {
     }
 }
 
+
+// MARK: - Public methods
+extension FileService: FileServiceProtocol {
+    
+    /// Getting image file from disk
+    public func getImage(imageKey: String) -> Data? {
+        guard let imagePath = getImagePath(key: imageKey),
+              let value = getValue(key: imageKey),
+              fileManager.fileExists(atPath: imagePath.path) else {
+            return nil
+        }
+        
+        guard let expiredTime = DateFormatter.fullDateTime.date(from: value.expireTime),
+              expiredTime > Date() else {
+            guard removeValue(key: imageKey) == nil,
+                  removeFile(key: imageKey) == nil else {
+                return nil
+            }
+            
+            return nil
+        }
+        
+        return try? Data(contentsOf: imagePath)
+    }
+    
+    /// Saving file to disk and adding new value to dictionary urls.json. Default expire time is 10 minutes
+    public func saveImage(imageData: Data, imageKey: String, expireTime: Date) -> Error? {
+        guard let imagePath = getImagePath(key: imageKey) else {
+            return FileServiceErrors.imagePathNotExist
+        }
+        
+        do {
+            try imageData.write(to: imagePath)
+            let expireTimeString = DateFormatter.fullDateTime.string(from: expireTime)
+            
+            addValue(key: imageKey, value: ImageFile(expireTime: expireTimeString))
+        } catch let error {
+            return error
+        }
+        
+        return nil
+    }
+}
+
 // MARK: - Private methods
 extension FileService {
     /// Creating folder and dictionary (urls.json) path if not exist
@@ -45,10 +89,8 @@ extension FileService {
         do {
             // Creating a folder
             try fileManager.createDirectory(at: folderUrl, withIntermediateDirectories: true)
-            print("[Log] Creating a folder...")
             // Creating urls.json file
             fileManager.createFile(atPath: dictFileUrl.path, contents: nil, attributes: nil)
-            print("[Log] Creating a urls.json file...")
             
         } catch let error {
             return error
@@ -148,49 +190,6 @@ extension FileService {
         }
         
         try? data.write(to: dictPath)
-    }
-}
-
-// MARK: - Public methods
-extension FileService: FileServiceProtocol {
-    
-    /// Getting image file from disk
-    public func getImage(imageKey: String) -> Data? {
-        guard let imagePath = getImagePath(key: imageKey),
-              let value = getValue(key: imageKey),
-              fileManager.fileExists(atPath: imagePath.path) else {
-            return nil
-        }
-        
-        guard let expiredTime = DateFormatter.fullDateTime.date(from: value.expireTime),
-              expiredTime > Date() else {
-            guard removeValue(key: imageKey) == nil,
-                  removeFile(key: imageKey) == nil else {
-                return nil
-            }
-            
-            return nil
-        }
-        
-        return try? Data(contentsOf: imagePath)
-    }
-    
-    /// Saving file to disk and adding new value to dictionary urls.json. Default expire time is 10 minutes
-    public func saveImage(imageData: Data, imageKey: String, expireTime: Date = Date().addingTimeInterval(10 * 60)) -> Error? {
-        guard let imagePath = getImagePath(key: imageKey) else {
-            return FileServiceErrors.imagePathNotExist
-        }
-        
-        do {
-            try imageData.write(to: imagePath)
-            let expireTimeString = DateFormatter.fullDateTime.string(from: expireTime)
-            
-            addValue(key: imageKey, value: ImageFile(expireTime: expireTimeString))
-        } catch let error {
-            return error
-        }
-        
-        return nil
     }
 }
 

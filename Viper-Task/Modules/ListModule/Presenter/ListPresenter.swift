@@ -12,7 +12,7 @@ protocol ListPresenterProtocol {
     
     func fetchActiveOrders()
     func getViewModelCount() -> Int
-    func getItemViewModel(at row: Int) -> ActiveOrderViewModelType?
+    func getItemViewModel(at row: Int) -> ActiveOrderViewModel?
     func didItemSelected(at row: Int)
 }
 
@@ -20,9 +20,9 @@ protocol ListPresenterProtocol {
 class ListPresenter: ListPresenterProtocol {
     weak var view: ListViewProtocol?
     var interactor: ListInteractorInputProtocol?
-    private var viewModel: [ActiveOrderViewModelType] = [] {
+    private var viewModel: [ActiveOrderViewModel] = [] {
         didSet {
-            view?.updateTableView()
+            self.view?.updateTableView()
         }
     }
     
@@ -37,38 +37,38 @@ class ListPresenter: ListPresenterProtocol {
     func viewDidLoad() {
         view?.configureTableView()
         
-        fetchActiveOrders()
+        self.fetchActiveOrders()
     }
     
     func didItemSelected(at row: Int) {
         let orderId = viewModel[row].id
-        router?.showDetail(with: orderId)
+        self.router?.showDetail(with: orderId)
     }
     
     func fetchActiveOrders() {
-        view?.changeIndicatorState(state: true)
-        interactor?.fetchOrders()
+        self.view?.changeIndicatorState(state: true)
+        self.interactor?.fetchOrders()
     }
         
     func getViewModelCount() -> Int {
-        return viewModel.count
+        return self.viewModel.count
     }
     
-    func getItemViewModel(at row: Int) -> ActiveOrderViewModelType? {
-        return viewModel[row]
+    func getItemViewModel(at row: Int) -> ActiveOrderViewModel? {
+        return self.viewModel[row]
     }
 }
 
 // MARK: - ListInteractorOutputProtocol Implementation
 extension ListPresenter: ListInteractorOutputProtocol {
     func showError(message: String) {
-        router?.showError(message: message)
+        self.router?.showError(message: message)
     }
     
-    func setViewModel(viewModel: [ActiveOrderViewModelType]) {
+    func setViewModel(viewModel: [ActiveOrderViewModel]) {
         let sortedViewModel = viewModel.sorted(by: { $0.date.compare($1.date) == .orderedDescending })
         
         self.viewModel = sortedViewModel
-        view?.changeIndicatorState(state: false)
+        self.view?.changeIndicatorState(state: false)
     }
 }

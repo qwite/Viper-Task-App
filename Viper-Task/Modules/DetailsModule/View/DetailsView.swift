@@ -4,7 +4,7 @@ import UIKit
 class DetailsView: UIView {
     
     // MARK: Properties
-    let cardView: UIView = {
+    lazy var cardView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
         view.backgroundColor = .white
@@ -38,7 +38,7 @@ class DetailsView: UIView {
         return imageView
     }()
     
-    let activityIndicator: UIActivityIndicatorView = {
+    lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.style = .gray
         indicator.hidesWhenStopped = true
@@ -62,12 +62,12 @@ extension DetailsView {
         activityIndicator.stopAnimating()
     }
     
-    public func configure(viewModel: DetailedActiveOrderViewModelType) {
+    public func configure(viewModel: DetailedActiveOrderViewModel) {
         startAddressLabel.text = viewModel.common.startAddress
         endAddressLabel.text = viewModel.common.endAddress
         dateTimeLabel.text = viewModel.common.date
-        priceLabel.text = "\(viewModel.common.price) ₽"
-        carLabel.text = "\(viewModel.vehicleModelName) / \(viewModel.vehicleRegNumber)"
+        priceLabel.text = viewModel.common.price
+        carLabel.text = viewModel.vehicleModelWithRegNumber
         driverLabel.text = viewModel.vehicleDriverName
         
         configureViews()

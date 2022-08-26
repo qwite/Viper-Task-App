@@ -1,21 +1,18 @@
 import Foundation
 
-// MARK: - DetailedActiveOrderViewModelType
-protocol DetailedActiveOrderViewModelType {
-    var common: ActiveOrderViewModelType { get }
-    var image: Data { get }
-    var vehicleRegNumber: String { get }
-    var vehicleModelName: String { get }
-    var vehiclePhoto: String { get }
-    var vehicleDriverName: String { get }
-}
-
-// MARK: - DetailedActiveOrderViewModelType Implementation
-struct DetailedActiveOrderViewModel: DetailedActiveOrderViewModelType {
-    let common: ActiveOrderViewModelType
+// MARK: - DetailedActiveOrderViewModel
+struct DetailedActiveOrderViewModel {
+    let common: ActiveOrderViewModel
     let image: Data
-    let vehicleRegNumber: String
-    let vehicleModelName: String
+    let vehicleModelWithRegNumber: String
     let vehiclePhoto: String
     let vehicleDriverName: String
+    
+    init(common: ActiveOrderViewModel, image: Data, vehicleModelName: String, vehicleRegNumber: String, vehiclePhoto: String, vehicleDriverName: String) {
+        self.common = common
+        self.image = image
+        self.vehicleModelWithRegNumber = "\(vehicleModelName) / \(vehicleRegNumber)"
+        self.vehiclePhoto = vehiclePhoto
+        self.vehicleDriverName = vehicleDriverName
+    }
 }
