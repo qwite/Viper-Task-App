@@ -67,7 +67,6 @@
 		1F97144E28A13A7900F269D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1F97145128A1A0CE00F269D5 /* ActiveOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveOrderViewModel.swift; sourceTree = "<group>"; };
 		1FAB64EC28ABB9D60028BB5D /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
-		1FD4577D28AD31940066578B /* simulator-recording.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "simulator-recording.gif"; sourceTree = "<group>"; };
 		1FE18888289FFF5400E42B51 /* Viper-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Viper-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE1888B289FFF5400E42B51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FE18894289FFF5500E42B51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -232,7 +231,7 @@
 			children = (
 				1FE1888A289FFF5400E42B51 /* Viper-Task */,
 				1FE18889289FFF5400E42B51 /* Products */,
-				1FD4577D28AD31940066578B /* simulator-recording.gif */,
+				1FD4577D28AD31940066578B /* simulator-recording.gif */
 			);
 			sourceTree = "<group>";
 		};
